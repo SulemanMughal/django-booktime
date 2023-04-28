@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+{% include 'main/notification.html' %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card mx-auto my-5 w-100  w-md-50 border-0 bg-transparent" >
+                    <div class="card-header bg-transparent border-0">
+                        <div class="row justify-content-center text-center">
+                            <div class="col">
+                                <h2 class="card-title fw-bolder  display-6">Login</h2>  
+                            </div>
+                        </div>
+                      </div>
+                    <div class="card-body">
+                        <form class="row g-3 needs-validation" novalidate  action="{% url 'user-login' %}" method="POST" id="login_form"> 
+                          {% include 'main/form_errors.html' %}
+                            {% csrf_token %}
+                            <div class="">
+                              <input type="text" class="form-control bg-transparent" id="exampleInputEmail1" aria-describedby="emailHelp" required="" name="username" autocomplete="off" placeholder="Username" tabindex="1" autofocus="on">
+                              <div class="invalid-feedback">
+                                Please enter a valid username
+                              </div>
+                            </div>
+                            <div class="">
+                              <input type="password" class="form-control bg-transparent mt-3" id="exampleInputPassword1" required="" name="password" autocomplete="off" placeholder="Password" tabindex="2">
+                              
+                              <div class="invalid-feedback">
+                                Please enter a password
+                              </div>
+                            </div>
+                            <div class="mt-5">
+                                <div class="row justify-content-center text-center">
+                                    <div class="col">
+                                        <input type="hidden" name="next" value="{{ request.GET.next }}" />
+                                        <button type="submit" class="btn btn-primary  w-50  "  tabindex="3">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                              <div class="row justify-content-center text-center">
+                                  <div class="col">
+                                    <p class="card-text">Don't have an account <a href="#!" target="_self" class="card-link text-primary text-decoration-none" tabindex="4">Register</a>
+                                    </p>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="">
+                              <div class="row justify-content-center text-center">
+                                  <div class="col">
+                                    <a href="#!" target="_self" class="card-link text-watercourse text-decoration-none" tabindex="5">Forgot Pasword ? </a>
+                                  </div>
+                              </div>
+                            </div>
+                          </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})();
+</script>
+{% endblock %}

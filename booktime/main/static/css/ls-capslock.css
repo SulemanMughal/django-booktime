@@ -1,0 +1,23 @@
+.ls-capslock {
+    position: relative !important;
+}
+
+.ls-capslock-active {	
+    border-color: rgba(255, 179, 179, 0.5);
+    box-shadow: 0 1px 1px rgba(255, 179, 179, 0.5) inset, 0 0 8px rgba(255, 179, 179, 1);
+    outline: 0 none;
+}
+
+.ls-capslock-message {
+	font-family: Arial, Verdana, sans-serif;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+	color: rgba(255, 179, 179, 255);
+}
+
+.ls-capslock-message-showed {
+    display: inherit;
+}
